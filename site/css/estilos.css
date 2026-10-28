@@ -1,0 +1,236 @@
+:root {
+  --color-primario: #1D3557;
+  --color-secundario: #426F8A;
+  --color-fondo: #F8FAFC;
+  --color-texto: #172033;
+  --color-acento: #0F766E;
+  --color-tarjeta: #ffffff;
+  --color-borde: rgba(0, 0, 0, 0.1);
+  --color-sombra: rgba(0, 0, 0, 0.08);
+  --color-btn-texto: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primario: #A8DADC;
+    --color-secundario: #8ECAE6;
+    --color-fondo: #0F172A;
+    --color-texto: #F1F5F9;
+    --color-acento: #2DD4BF;
+    --color-tarjeta: #1E293B;
+    --color-borde: rgba(255, 255, 255, 0.1);
+    --color-sombra: rgba(0, 0, 0, 0.4);
+    --color-btn-texto: #0F172A;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, serif;
+  color: var(--color-primario);
+}
+
+header {
+  padding: 2rem 1rem 1rem;
+  border-bottom: 1px solid var(--color-borde);
+  background-color: var(--color-tarjeta);
+}
+
+.cabecera-principal {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.avatar {
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cabecera-titulos {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.titular {
+  color: var(--color-secundario);
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+nav {
+  margin-top: 1.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--color-primario);
+  font-weight: 600;
+  padding: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--color-acento);
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+  flex-grow: 1;
+  width: 100%;
+}
+
+section {
+  margin-bottom: 2.5rem;
+}
+
+section h2 {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--color-secundario);
+  padding-bottom: 0.25rem;
+  display: inline-block;
+}
+
+ul {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+a {
+  color: var(--color-acento);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.rejilla-proyectos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.proyecto {
+  background-color: var(--color-tarjeta);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--color-sombra);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--color-borde);
+}
+
+.proyecto h2 {
+  border-bottom: none;
+  display: block;
+  font-size: 1.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.proyecto p {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.tecnologias {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.tecnologias li {
+  background-color: var(--color-fondo);
+  color: var(--color-secundario);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 0;
+  border: 1px solid var(--color-borde);
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--color-acento);
+  color: var(--color-btn-texto);
+  text-decoration: none;
+  padding: 0.65rem 1.25rem;
+  border-radius: 12px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: opacity 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+.acciones-pagina {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--color-tarjeta);
+  border-top: 1px solid var(--color-borde);
+  color: var(--color-secundario);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .cabecera-principal {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .rejilla-proyectos {
+    grid-template-columns: 1fr;
+  }
+
+  nav ul {
+    gap: 0.75rem;
+  }
+}

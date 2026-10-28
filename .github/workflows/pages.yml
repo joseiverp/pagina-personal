@@ -1,0 +1,69 @@
+# Nombre del flujo de trabajo de integración continua y despliegue continuo
+name: "Tests y despliegue en GitHub Pages"
+
+# Disparadores del workflow: push a main, pull_request a main y ejecución manual
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Permisos globales mínimos necesarios para lectura del repositorio
+permissions:
+  contents: read
+
+# Control de concurrencia para evitar despliegues simultáneos que colisionen
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Job encargado de validar el HTML y ejecutar la batería de tests unitarios
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar código fuente
+        uses: actions/checkout@v7
+
+      - name: Configurar entorno Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Ejecutar pruebas y validaciones
+        run: npm test
+
+  # Job de compilación y publicación del sitio web en GitHub Pages
+  despliegue:
+    needs: tests
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Descargar código fuente
+        uses: actions/checkout@v7
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Subir artefacto con los ficheros estáticos de site/
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+      - name: Desplegar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

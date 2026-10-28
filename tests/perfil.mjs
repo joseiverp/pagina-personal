@@ -4,7 +4,7 @@ export const PERFIL = {
   titular: "Estudiante de DAW",
   usuarioGithub: "joseiverp",
   email: "14499483@alu.murciaeduca.es",
-  minimoProyectos: 3,
+  minimoProyectos: 4,
   minimoHabilidades: 6,
   secciones: ["sobre-mi", "formacion", "habilidades", "contacto"],
   paleta: {
@@ -12,7 +12,7 @@ export const PERFIL = {
     "--color-secundario": "#426F8A",
     "--color-fondo": "#F8FAFC",
     "--color-texto": "#172033",
-    "--color-acento": "#0F766E"
+    "--color-acento": "#B45309"
   },
   fuenteTitulos: "Georgia",
   fuenteTexto: "system-ui",
@@ -36,6 +36,12 @@ export const PERFIL = {
       descripcion: "Proyecto en desarrollo para el IES Ramón Arcas Meca que incluye una web pública del centro y una intranet de gestión docente.",
       tecnologias: ["HTML", "CSS", "TypeScript", "PHP"],
       enlace: "https://github.com/DAW2ProyectoIntermodular/ProyectoIntermodular"
+    },
+    {
+      titulo: "Frontend con Express",
+      descripcion: "Plantilla mínima de una aplicación web con Node.js y Express para servir archivos estáticos. Incluye una página HTML de ejemplo y un endpoint de prueba.",
+      tecnologias: ["HTML", "JavaScript", "Node.js", "Express"],
+      enlace: "https://github.com/joseiverp/frontend"
     }
   ]
 };
